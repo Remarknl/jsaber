@@ -31,3 +31,4 @@ nb-configuration.xml
 hs_err_pid*
 PiTestApplication/nbproject/private/config.properties
 PiTestApplication/nbproject/private/private.properties
+*.properties
