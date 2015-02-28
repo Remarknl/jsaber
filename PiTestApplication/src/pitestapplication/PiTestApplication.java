@@ -10,12 +10,12 @@ public class PiTestApplication extends MIDlet {
     
     @Override
     public void startApp() {
-        //pin, amount of pulses, ns time on, ns time off
-        pulsetest = new PinPulseExample(25, 10, 1000_000, 1000_000_000);
-        button = new ButtonExample(23);
+        //amount of pulses, ns time on, ns time off
+        pulsetest = new PinPulseExample(10, 1000_000_000, 1000_000_000);
+        //button = new ButtonExample(23);
         try {
             pulsetest.start();
-            button.start();
+            //button.start();
         } catch (IOException ex) {
             System.out.println("IOException: " + ex);
             notifyDestroyed();
