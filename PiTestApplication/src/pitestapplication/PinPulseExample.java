@@ -18,6 +18,8 @@ public class PinPulseExample implements AutoCloseable {
     private GPIOPin pin7;
     private GPIOPin pin8;
 
+    
+    // GPIOPin 4, 17, 18, 27, 22, 5, 24, 25 can be used
     public PinPulseExample(int times, int onTime, int offTime) {
         this.TIMES = times;
         this.ON_TIME = onTime;

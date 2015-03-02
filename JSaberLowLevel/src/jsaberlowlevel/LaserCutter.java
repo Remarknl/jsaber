@@ -1,4 +1,9 @@
 package jsaberlowlevel;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import jsaberlowlevel.instructions.Homer;
+import jsaberlowlevel.instructions.Instruction;
 import jsaberlowlevel.instructions.Move;
 public class LaserCutter {
     public static final int X_DIRECTION_PIN_NUMBER = 0;
@@ -12,7 +17,11 @@ public class LaserCutter {
     public static final int PAUSE_PIN_NUMBER = 0;
     public static final int START_PIN_NUMBER = 0;
     public static final int R_V_SWITCH_PIN_NUMBER = 0;
-    public static final int STEPS_PER_MM = 0;
+    
+    public static final int STEPS_PER_MM = 160;
+    public static final int ACCELLERATION = 50; // mm/sec^2
+    public static final int DEFAULT_FEED_RATE = 500; // mm/min
+    public static final int DEFAULT_SEEK_RATE = 500; // mm/min
     public static final String GCODE_DIRECTORY = "./";
     
     private static long X_OFFSET = 0;
@@ -57,6 +66,10 @@ public class LaserCutter {
     }
 
     static void init() {
-        LinkedTransferQueue.addInstruction(new Move(LaserCutter.X_OFFSET,LaserCutter.Y_OFFSET));
+        try {
+            LinkedTransferQueue.addInstruction((Instruction)new Homer());
+        } catch (IOException ex) {
+            Logger.getLogger(LaserCutter.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
