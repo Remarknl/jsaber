@@ -16,6 +16,7 @@ public class LaserCutter implements AutoCloseable {
     private static final int X_STEP_PIN_NUMBER = 0;
     private static final int Y_STEP_PIN_NUMBER = 0;
     private static final int ENABLE_PIN_NUMBER = 0;
+    
     private static final int X_ENDSTOP_PIN_NUMBER = 0;
     private static final int Y_ENDSTOP_PIN_NUMBER = 0;
     private static final int ABORT_PIN_NUMBER = 0;
@@ -90,11 +91,7 @@ public class LaserCutter implements AutoCloseable {
 
     static void init() {
         init_pins();
-        try {
-            LinkedTransferQueue.addInstruction((Instruction)new Homer());
-        } catch (IOException ex) {
-            Logger.getLogger(LaserCutter.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        LinkedTransferQueue.addInstruction((Instruction)new Homer());
     }
     
     private static void init_pins() {
@@ -122,9 +119,9 @@ public class LaserCutter implements AutoCloseable {
         }
     }
 
-    public static long getOffTime(int i) {
-        
-        return 0-PULSE_TIME;
+    public static long getOffTime(int feedrate) {
+        long stepsPerSecond = feedrate * STEPS_PER_MM / 60;
+        return 1000_000_000 / stepsPerSecond - PULSE_TIME * stepsPerSecond;
     }
     
     @Override

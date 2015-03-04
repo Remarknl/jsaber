@@ -2,21 +2,14 @@ package jsaberlowlevel.instructions;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jdk.dio.gpio.GPIOPin;
 import jdk.dio.gpio.PinEvent;
 import jdk.dio.gpio.PinListener;
+import jsaberlowlevel.Axis;
 import jsaberlowlevel.LaserCutter;
 
 public class Homer implements PinListener, Instruction {
-    boolean inputListener;
+    boolean inputListener = true;
     
-    public Homer() throws IOException {
-        //X_OFFSET = new PinOutConfiguration(27).getGPIOPin();
-        //Y_OFFSET = new PinOutConfiguration(23).getGPIOPin();
-        //X_HOME_LISTENER = new PinListnerConfiguration(4).getGPIOPin();
-        //Y_HOME_LISTNER = new PinListnerConfiguration(17).getGPIOPin();
-        //inputListener = true;
-    }
     @Override
     public void execute() {
         try {
@@ -34,11 +27,24 @@ public class Homer implements PinListener, Instruction {
 
     private void homeX() throws IOException {
         LaserCutter.X_ENDSTOP_PIN.setInputListener(this);
+        MoveStep moveOnce = new MoveStep();
+        moveOnce.setDirection(Axis.X, 0);
+        moveOnce.setFeedrate(50);
+        moveOnce.along(Axis.X);
+        while(inputListener){
+            moveOnce.execute();
+        }
         
     }
 
     private void homeY() throws IOException {
-        LaserCutter.X_ENDSTOP_PIN.setInputListener(this);
-        
+        LaserCutter.Y_ENDSTOP_PIN.setInputListener(this);
+        MoveStep moveOnce = new MoveStep();
+        moveOnce.setDirection(Axis.Y, 0);
+        moveOnce.setFeedrate(50);
+        moveOnce.along(Axis.Y);
+        while(inputListener){
+            moveOnce.execute();
+        }
     }
 }

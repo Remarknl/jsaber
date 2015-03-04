@@ -1,6 +1,6 @@
 package jsaberlowlevel.instructions;
 
-public class Move implements Instruction {
+public class Move extends MoveStep {
     private final long X_OFFSET;
     private final long Y_OFFSET;
     private final boolean LASER_ON;
