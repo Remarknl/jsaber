@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JSaber</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="js/DragAndDrop.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/JSaberStyle.css">
+        <script>
+            //header en footer include
+            $(function () {
+                $("#header").load("header.html");
+                $("#footer").load("footer.html");
+            });
+        </script> 
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!--div om header te includen-->
+            <div id="header"></div>
+
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Upload Files</strong></div>
+                    <div class="panel-body">
+
+                        <!-- Standar Form -->
+                        <h4>Select a gcode file from your computer</h4>
+                        <form action="/gCodeService" method="post" enctype="multipart/form-data" id="js-upload-form">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <input type="file" name="file" id="js-upload-files" >
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload file</button>
+                            </div>
+                        </form>
+
+                        <!-- Drop Zone -->
+                        <h4>Or drag and drop file below</h4>
+                        <div class="upload-drop-zone" id="dragandrophandler">
+                            Just drag and drop file here
+                        </div>
+                        <div id="status1"></div>
+
+
+                    </div>
+                </div>
+            </div> 
+
+        </div>
+        <!--div om footer te includen-->
+        <div id="footer"></div>
+
+        <script>
+            $('#js-upload-form').submit(function () {
+                //var files = e.originalEvent.dataTransfer.files;
+                var files = new FormData();
+                jQuery.each(jQuery('#js-upload-files')[0].files, function (i, file) {
+                    files.append('file-' + i, file);
+                    console.log($('#js-upload-files')[0].files);
+                });
+    
+                //We need to send dropped files to Server
+                handleFileUpload($('#js-upload-files')[0].files);
+                return false;
+            });
+
+        </script>
+
+    </body> 
+
+</html>
+
+
+
+
+
+
+

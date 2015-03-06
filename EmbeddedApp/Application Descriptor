@@ -1,0 +1,17 @@
+MIDlet-3: LineCounterApplication,,jsaber.serversocket.LineCounterApplication
+MIDlet-2: OutputApplication,,jsaber.serversocket.OutputApplication
+MIDlet-1: DataForwarderSample,,jsaber.serversocket.DataForwarderSample
+MIDlet-Permission-6: javax.microedition.io.SocketProtocolPermission "socket://*:1-65535"
+MIDlet-Jar-URL: DataForwarderSample.jar
+MIDlet-Permission-5: javax.microedition.io.SocketProtocolPermission "socket://:1-65535"
+MIDlet-Event-Launch-2: jsaber.serversocket.OutputApplication;jsaber.serversocket.IMC_DATA_FORWARDER_STARTED
+MIDlet-Permission-4: javax.microedition.io.IMCProtocolPermission "imc://:*:*;"
+MIDlet-Event-Launch-1: jsaber.serversocket.LineCounterApplication;jsaber.serversocket.IMC_DATA_FORWARDER_STARTED
+MIDlet-Permission-3: javax.microedition.io.IMCProtocolPermission "imc://*:*:*;"
+MIDlet-Permission-2: javax.microedition.event.EventPermission "jsaber.serversocket.IMC_DATA_FORWARDER_STARTED" "post,read,register"
+MicroEdition-Configuration: CLDC-1.8
+MIDlet-Permission-1: java.util.PropertyPermission "*" "read"
+MIDlet-Version: 1.0
+MIDlet-Vendor: Oracle
+MIDlet-Name: DataForwarderSample
+MicroEdition-Profile: MEEP-8.0

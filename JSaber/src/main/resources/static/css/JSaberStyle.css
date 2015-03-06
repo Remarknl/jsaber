@@ -1,0 +1,108 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1-mrt-2015, 20:49:21
+    Author     : rru20841
+*/
+
+
+.navbar-brand{
+    padding: 4px;
+    margin-right: 2px;
+}
+.navbar-text{
+    color: white !important;
+    font-size: 25px;
+    font-style: italic;
+}
+#JSaberlogo{
+    float:left;
+}
+
+
+.navbar-default {
+    background-color: #FF8C00;
+}
+.JSaber-footer{
+    background-color:#FFBC6B;
+}
+.jumbotron{
+ 
+}
+
+.text-center {
+    text-align: left; 
+}
+#ordinaLogo{
+    float: right;
+    color:white;
+    font-style: italic;
+}
+
+
+.navbar-fixed-bottom, .navbar-fixed-top{
+    position: relative;                
+}
+body{
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+.navbar-default .navbar-nav>li>a .navbar-nav>p {
+    color: white;
+}
+
+html, body {
+    height: 100%!important;  
+}
+.JSaber-footer {
+    height: 66px;
+}
+#JSaberLogoSmall{
+   
+    margin-top:5px;
+}
+.wrapper {
+    min-height: 100%!important;
+    height: auto !important;
+    height: 100% !important;
+    margin: 0 auto -66px;
+}
+.functionalityTile{
+    font-size: 30px;
+    font-weight: bold;
+    width: calc(100% /3.1);
+    box-shadow: 5px 5px 5px #888888;
+    height:200px;
+    line-height: 200px;
+    text-align: center;
+    margin-right:10px;
+    margin-top: 10px;
+    float:left;
+    background-color: white;
+    border: 3px solid #638CA6;
+}
+
+/* layout.css Style */
+.upload-drop-zone {
+  height: 200px;
+  border-width: 2px;
+  margin-bottom: 20px;
+}
+
+/* skin.css Style*/
+.upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 200px;
+  text-align: center
+}
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+}
+
+

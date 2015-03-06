@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JSaber</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/JSaberStyle.css">
+        <script>
+            //header en footer include
+            $(function () {
+                $("#header").load("header.html");
+                $("#footer").load("footer.html");
+            });
+        </script> 
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!--div om header te includen-->
+            <div id="header"></div>
+
+            <div class="container">
+                <div class="jumbotron text-center">
+
+                    <a class="functionalityTile" href="gcode.html">gcode</a>
+                    <a class="functionalityTile" href="testapps.html">testapps</a>
+                    <a class="functionalityTile" href="calibrate.html">calibrate</a>
+                    <div class="spacer" style="clear: both;"></div>
+                </div>
+            </div> 
+
+        </div>
+        <!--div om footer te includen-->
+        <div id="footer"></div>
+    </body> 
+</html>
