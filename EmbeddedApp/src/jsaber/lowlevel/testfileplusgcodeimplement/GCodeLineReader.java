@@ -1,32 +1,40 @@
 package jsaber.lowlevel.testfileplusgcodeimplement;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import javax.microedition.io.Connector;
 import javax.microedition.io.file.FileConnection;
-
+import java.io.InputStreamReader;
 
 public class GCodeLineReader {
+
     LinkedList<String> GCodeLines = new LinkedList<>();
-    
-    public void main (){
-        FileConnection fc = null;
+
+    public LinkedList<String> run() {
         try {
-            fc = (FileConnection) Connector.open("D:\\projecten\\gcode\\output_002.txt"); //moet nog file:\\ voor d:\\ komen te staan, maar dan geeft ie nu nog even een exception en kan de applicatie niet starten
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fc.openInputStream()));
             
-            String tempLine = null;
-            do{
-                tempLine = bufferedReader.readLine();
-                if (tempLine != null){
-                    GCodeLines.add(tempLine);
-                } 
-            }while (tempLine != null);
-        } catch(IOException e){
-            System.out.println("FileConnectionError" + e);
+//            get the root:
+//            Enumeration drives = FileSystemRegistry.listRoots();
+//            String root = (String) drives.nextElement();
+//            String path = "file:///" + root;
+//            System.out.println(path);
+            
+            
+            String folder = "file:///rootfs/home/pi/";
+            FileConnection fc = (FileConnection) Connector.open(folder + "output_0004.txt");
+            System.out.println(fc.exists());
+
+            BufferedReader readGCodeLines = new BufferedReader(new InputStreamReader(fc.openInputStream()));
+
+            String line;
+            while((line = readGCodeLines.readLine()) != null){
+                GCodeLines.add(line);
+            }
+        } catch (IOException ex) {
+             ex.getMessage();
         }
-        
+        return GCodeLines;
     }
 }
+

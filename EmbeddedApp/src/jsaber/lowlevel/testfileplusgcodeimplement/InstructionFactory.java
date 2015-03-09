@@ -18,7 +18,6 @@ public class InstructionFactory {
             
         }
     }
-    
     public LinkedList<Move> getMoveList(){
         return moveList;
     }

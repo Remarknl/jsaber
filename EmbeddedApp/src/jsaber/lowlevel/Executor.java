@@ -1,28 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jsaber.lowlevel;
-
-/**
- *
- * @author rru20841
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
 import jsaber.lowlevel.LinkedTransferQueue;
 
-/**
- *
- * @author rgi20802
- */
-public class Executor {
+public class Executor implements Runnable {
 
     public static void finish() {
         //kill worker thread
@@ -39,7 +19,14 @@ public class Executor {
     }
     
     public static void start() {
-        //make new worker thread that does execute()
+        Runnable rb = new Executor();
+        Thread executerThread = new Thread(rb);
+        executerThread.setPriority(10);
+        executerThread.setName("executerThread");
+        executerThread.run();
+    }
+    
+    public void run(){
         execute();
     }
 }
