@@ -9,20 +9,21 @@ import jsaber.lowlevel.instructions.Instruction;
 
 public class LaserCutter implements AutoCloseable {
 
-    private static final int X_DIRECTION_PIN_NUMBER = 0;
-    private static final int Y_DIRECTION_PIN_NUMBER = 0;
-    private static final int X_STEP_PIN_NUMBER = 0;
-    private static final int Y_STEP_PIN_NUMBER = 0;
-    private static final int ENABLE_PIN_NUMBER = 0;
+    private static final int X_DIRECTION_PIN_NUMBER = 4;
+    private static final int Y_DIRECTION_PIN_NUMBER = 24;
+    private static final int X_STEP_PIN_NUMBER = 22;
+    private static final int Y_STEP_PIN_NUMBER = 17;
+    private static final int ENABLE_PIN_NUMBER = 23;
 
-    private static final int X_ENDSTOP_PIN_NUMBER = 0;
-    private static final int Y_ENDSTOP_PIN_NUMBER = 0;
-    private static final int ABORT_PIN_NUMBER = 0;
-    private static final int PAUSE_PIN_NUMBER = 0;
-    private static final int START_PIN_NUMBER = 0;
-    private static final int R_V_SWITCH_PIN_NUMBER = 0;
+    private static final int X_ENDSTOP_PIN_NUMBER = 26;
+    private static final int Y_ENDSTOP_PIN_NUMBER = 16;
+    private static final int ABORT_PIN_NUMBER = 13;
+    private static final int PAUSE_PIN_NUMBER = 19;
+    private static final int START_PIN_NUMBER = 6;
+    private static final int R_V_SWITCH_PIN_NUMBER = 16;
 
     public static final int STEPS_PER_MM = 160;
+    public static final int MM_PER_STEP_TIMES_10000 = 62; // gelijk gemaakt aan de gcode welke 4 cijfers achter de komma heeft
     public static final int ACCELLERATION = 50; // mm/sec^2
     public static final int DEFAULT_FEED_RATE = 500; // mm/min
     public static final int DEFAULT_SEEK_RATE = 500; // mm/min
@@ -120,6 +121,8 @@ public class LaserCutter implements AutoCloseable {
         long stepsPerSecond = feedrate * STEPS_PER_MM / 60;
         return 1000_000_000 / stepsPerSecond - PULSE_TIME * stepsPerSecond;
     }
+    
+    
 
     @Override
     public void close() {

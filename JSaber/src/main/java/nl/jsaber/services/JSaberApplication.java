@@ -85,8 +85,8 @@ public class JSaberApplication {
         OutputStream os = null;
         SocketConnection sc = null;
         try {
-
-            sc = (SocketConnection) Connector.open("socket://localhost:64111");
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   --> has got to be localhost when running on raspberry pi
+            sc = (SocketConnection) Connector.open("socket://192.168.0.106:64111");
             //timeout om ervoor te zorgen dat de socket voldoende tijd heeft om te connecten
             try {
                 Thread.sleep(2000);//2 seconds

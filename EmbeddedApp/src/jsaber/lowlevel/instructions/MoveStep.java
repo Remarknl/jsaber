@@ -2,7 +2,6 @@ package jsaber.lowlevel.instructions;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jsaber.lowlevel.instructions.Axis;
 import jsaber.lowlevel.LaserCutter;
 
 /**
@@ -11,11 +10,11 @@ import jsaber.lowlevel.LaserCutter;
  */
 public class MoveStep implements Instruction {
     
-    private int xDirection = 0;
-    private int yDirection = 0;
-    private boolean alongX = false;
-    private boolean alongY = false;
-    private int feedrate = 0;
+    boolean xDirection = false;
+    boolean yDirection = false;
+    boolean alongX = false;
+    boolean alongY = false;
+    int feedrate = 0;
     
     @Override
     public void execute() {
@@ -33,7 +32,7 @@ public class MoveStep implements Instruction {
         }
     }
 
-    public void setDirection(Axis axis, int i) {
+    public void setDirection(Axis axis, boolean i) {
         if (axis == Axis.X) xDirection = i;
         if (axis == Axis.Y) yDirection = i;
     }

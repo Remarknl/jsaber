@@ -25,9 +25,12 @@ public class Homer implements PinListener, Instruction {
     }
 
     private void homeX() throws IOException {
+        System.out.println("before");
         LaserCutter.X_ENDSTOP_PIN.setInputListener(this);
+        System.out.println("after");
         MoveStep moveOnce = new MoveStep();
-        moveOnce.setDirection(Axis.X, 0);
+        
+        moveOnce.setDirection(Axis.X, false);
         moveOnce.setFeedrate(50);
         moveOnce.along(Axis.X);
         while(inputListener){
@@ -39,7 +42,7 @@ public class Homer implements PinListener, Instruction {
     private void homeY() throws IOException {
         LaserCutter.Y_ENDSTOP_PIN.setInputListener(this);
         MoveStep moveOnce = new MoveStep();
-        moveOnce.setDirection(Axis.Y, 0);
+        moveOnce.setDirection(Axis.Y, false);
         moveOnce.setFeedrate(50);
         moveOnce.along(Axis.Y);
         while(inputListener){

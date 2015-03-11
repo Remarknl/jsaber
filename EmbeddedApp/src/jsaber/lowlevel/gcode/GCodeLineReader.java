@@ -1,4 +1,4 @@
-package jsaber.lowlevel.testfileplusgcodeimplement;
+package jsaber.lowlevel.gcode;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ public class GCodeLineReader {
 
     LinkedList<String> GCodeLines = new LinkedList<>();
 
-    public LinkedList<String> run() {
+    public LinkedList<String> returnGCodeLinesFromFile(String fileName) {
         try {
             
 //            get the root:
@@ -21,8 +21,9 @@ public class GCodeLineReader {
 //            System.out.println(path);
             
             
-            String folder = "file:///rootfs/home/pi/";
-            FileConnection fc = (FileConnection) Connector.open(folder + "output_0004.txt");
+            String folder = "file:///rootfs/home/pi/gcode/";
+//            String fileName = "output_0004.txt";
+            FileConnection fc = (FileConnection) Connector.open(folder + fileName);
             System.out.println(fc.exists());
 
             BufferedReader readGCodeLines = new BufferedReader(new InputStreamReader(fc.openInputStream()));
